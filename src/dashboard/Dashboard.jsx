@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from 'redux'
 
+import { getSummary } from './dashboardActions'
 import ContentHeader from "../common/template/ContentHeader";
 import Content from "../common/template/Content";
 import ValueBox from "../common/widget/ValueBox";
 import Row from "../common/layout/Row";
 
 class Dashboard extends Component {
+
+    componentWillMount(){
+        this.props.getSummary()
+    }
+
     render(){
         
         const { credit, debt } = this.props.summary
@@ -30,5 +37,8 @@ class Dashboard extends Component {
 //pega os dados do state global e coloca no prop 'summary'
 const mapStateToProps = state => ({summary: state.dashboard.summary})
 
+//liga a action creator com os reducers
+const mapDispatchToProps = dispatch => bindActionCreators({getSummary}, dispatch)
+
 //passa os props com os dados pra classe
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

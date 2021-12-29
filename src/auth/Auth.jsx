@@ -8,7 +8,6 @@ import { login, signup } from './authActions'
 
 import Row from '../common/layout/Row'
 import Grid from '../common/layout/Grid'
-import If from '../common/operator/If'
 import Messages from '../common/msg/Messages'
 import Input from '../common/form/InputAuth'
 

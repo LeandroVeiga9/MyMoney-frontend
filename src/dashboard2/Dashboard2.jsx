@@ -23,15 +23,16 @@ export default class Dashboard extends Component {
     render(){
         
         const { credit, debt } = this.state
+        const result = (credit - debt)
 
         return(
             <div>
                 <ContentHeader title="dashboard" small='versão 2.0' />
                 <Content>
                     <Row>
-                        <ValueBox cols='12 4' color='green' icon='bank' value={`R$ ${credit}`} text='Total de Créditos' />
-                        <ValueBox cols='12 4' color='red' icon='credit-card' value={`R$ ${debt}`} text='Total de Débitos' />
-                        <ValueBox cols='12 4' color='blue' icon='money' value={`R$ ${credit - debt}`} text='Valor consolidado' />
+                    <ValueBox cols='12 4' color='green' icon='bank' value={`R$ ${parseFloat(credit.toFixed(2))}`} text='Total de Créditos' />
+                        <ValueBox cols='12 4' color='red' icon='credit-card' value={`R$ ${parseFloat(debt.toFixed(2))}`} text='Total de Débitos' />
+                        <ValueBox cols='12 4' color='blue' icon='money' value={`R$ ${parseFloat(result.toFixed(2))}`} text='Valor consolidado' />
                     </Row>
                     
                 </Content>
